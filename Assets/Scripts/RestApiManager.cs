@@ -9,6 +9,7 @@ public class RestApiManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private string URL;
     [SerializeField] public GameObject Mano;
+    [SerializeField] public Text BarajaText;
     [SerializeField] public Text Numero1;
     [SerializeField] public GameObject Corazon1;
     [SerializeField] public GameObject Diamante1;
@@ -67,6 +68,8 @@ public class RestApiManager : MonoBehaviour
             foreach (Cartas data in resData.Poker)
             {
                 Debug.Log(data.Palo + " | " + data.Numero);
+                BarajaText.text += data.Palo + ":  " + data.Numero + "\n";
+                
                 if (counter==0) {
                     
                     if (data.Palo == "Corazon")
