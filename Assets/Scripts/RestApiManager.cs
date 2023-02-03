@@ -10,7 +10,7 @@ public class RestApiManager : MonoBehaviour
     [SerializeField] private string URL;
     [SerializeField] public GameObject Mano;
     [SerializeField] public Text BarajaText;
-    [SerializeField] public Text Numero1;
+    /*[SerializeField] public Text Numero1;
     [SerializeField] public GameObject Corazon1;
     [SerializeField] public GameObject Diamante1;
     [SerializeField] public GameObject Pica1;
@@ -35,7 +35,7 @@ public class RestApiManager : MonoBehaviour
     [SerializeField] public GameObject Diamante5;
     [SerializeField] public GameObject Pica5;
     [SerializeField] public GameObject Trebol5;
-    int counter;
+    int counter;*/
     
     void Start()
     {
@@ -50,8 +50,8 @@ public class RestApiManager : MonoBehaviour
 
     IEnumerator GetCards()
     {
-        
-        string url = URL + "/BarajaPoker";
+
+        string url = URL + "/Baraja";
         UnityWebRequest www = UnityWebRequest.Get(url);
         yield return www.SendWebRequest();
 
@@ -69,7 +69,7 @@ public class RestApiManager : MonoBehaviour
             {
                 Debug.Log(data.Palo + " | " + data.Numero);
                 BarajaText.text += data.Palo + ":  " + data.Numero + "\n";
-                
+                /*
                 if (counter==0) {
                     
                     if (data.Palo == "Corazon")
@@ -197,7 +197,7 @@ public class RestApiManager : MonoBehaviour
                     Numero5.text += data.Numero;
 
                     counter = 0;
-                }
+                }*/
 
             }
         }
