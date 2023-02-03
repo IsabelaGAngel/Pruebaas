@@ -51,7 +51,7 @@ public class RestApiManager : MonoBehaviour
     IEnumerator GetCards()
     {
 
-        string url = URL + "/Baraja";
+        string url = URL + "/BarajaPoker";
         UnityWebRequest www = UnityWebRequest.Get(url);
         yield return www.SendWebRequest();
 
@@ -63,9 +63,9 @@ public class RestApiManager : MonoBehaviour
         {
             Mano.SetActive(true);
             Debug.Log(www.downloadHandler.text);
-            BarajaPoker resData = JsonUtility.FromJson<BarajaPoker>(www.downloadHandler.text);
+            BarajaData resData = JsonUtility.FromJson<BarajaData>(www.downloadHandler.text);
 
-            foreach (Cartas data in resData.Poker)
+            foreach (Cartas data in resData.BarajaPoker)
             {
                 Debug.Log(data.Palo + " | " + data.Numero);
                 BarajaText.text += data.Palo + ":  " + data.Numero + "\n";
@@ -215,7 +215,7 @@ public class Cartas
     public string Numero;
 }
 [System.Serializable]
-public class BarajaPoker
+public class BarajaData
 {
-    public Cartas[] Poker;
+    public Cartas[] BarajaPoker;
 }
